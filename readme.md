@@ -1,3 +1,7 @@
+###
+
+``export FORTIO_POD=$(kubectl get pods -l app=fortio -o 'jsonpath={.items[0].metadata.name}')``
+
 ### Comando para ativar o sidecar proxy
 
 ``kubectl label namespace default istio-injection=true``
@@ -24,6 +28,10 @@ https://raw.githubusercontent.com/istio/istio/master/samples/addons/prometheus.y
 
 Para realizar o deploy canário pelo istio é bem simples. Pela dashboard no Kiali você consegue alterar todas as possiveis configurações.
 
-### Stick Session | consistense hasg
+### Stick Session | consistense hash
 
 Por padrão, um Application Load Balancer roteia cada solicitação de forma independente para um destino registrado com base no algoritmo de balanceamento de carga escolhido. No entanto, você pode usar o recurso de sessão persistente (também conhecido como afinidade de sessão) para permitir que o balanceador de carga associe a sessão de um usuário a um destino específico. Isso garante que todas as solicitações do usuário durante a sessão sejam enviadas para o mesmo destino. Esse recurso é útil para servidores que mantêm informações de estado para fornecer uma experiência contínua aos clientes. Para usar sessões fixas, o cliente deve oferecer suporte a cookies.
+
+### Fault Injection
+
+Injeção de falha para simular/forçar alguns tipos de problemas sem a necessidade de alterar o código da aplicação.
